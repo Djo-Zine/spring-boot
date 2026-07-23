@@ -5,12 +5,18 @@ on:
     branches:
       - master
 
+  pull_request:
+    branches:
+      - master
+
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+
+      - name: Récupérer le code
         uses: actions/checkout@v4
 
       - name: Installer Java
@@ -19,5 +25,5 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build Maven
+      - name: Compiler et tester
         run: mvn clean test
